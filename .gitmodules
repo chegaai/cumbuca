@@ -7,3 +7,6 @@
 [submodule "ms-groups"]
 	path = ms-groups
 	url = git@gitlab.com:chega.ai/ms-groups.git
+[submodule "ms-templates"]
+	path = ms-templates
+	url = git@gitlab.com:chega.ai/ms-templates.git
