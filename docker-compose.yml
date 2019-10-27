@@ -99,7 +99,6 @@ services:
       AUTH_JWT_AUDIENCE: api-gateway.127.0.0.1.nip.io
       AUTH_JWT_ISSUER: urn:chega.ai:issuerd
       MAPS_FILE_URL: $API_GATEWAY_CONFIG
-      DEBUG: api-gateway:presentation:routes
     depends_on:
       - vhost
       - ms-events
