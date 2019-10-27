@@ -1,20 +1,100 @@
-http://ms-events:3000:
+# ms-events
+http://ms-events$SERVICES_SUFFIX:
   - path: /ping/events
     at: /ping
     method: get
-http://ms-users:3000:
+  - path: /events/:eventId
+    at: /:eventId
+    method: get
+  - path: /events/
+    at: /
+    method: get
+  - path: /events/
+    at: /
+    method: post
+  - path: /events/:eventId
+    at: /:eventId
+    method: put
+  - path: /events/:eventId
+    at: /:eventId
+    method: delete
+
+# ms-user
+http://ms-users$SERVICES_SUFFIX:
   - path: /ping/users
     at: /ping
     method: get
-http://ms-groups:3000:
+  - path: /users/:userId
+    at: /:userId
+    method: get
+  - path: /users/
+    at: /
+    method: get
+  - path: /users/
+    at: /
+    method: post
+  - path: /users/login
+    at: /login
+    method: post
+  - path: /users/:userId
+    at: /:userId
+    method: put
+  - path: /users/:userId
+    at: /:userId
+    method: delete
+  - path: /users/:userId/followed-groups
+    at: /:userId/followed-groups
+    method: put
+
+# ms-groups
+http://ms-groups$SERVICES_SUFFIX:
   - path: /ping/groups
     at: /ping
     method: get
-http://ms-templates:3000:
+  - path: /groups/groups/:groupId
+    at: /groups/:groupId
+    method: get
+  - path: /groups/groups
+    at: /groups
+    method: get
+  - path: /groups/groups
+    at: /groups
+    method: post
+  - path: /groups/groups/:groupId
+    at: /groups/:groupId
+    method: put
+  - path: /groups/groups/:groupId
+    at: /groups/:groupId
+    method: delete
+  - path: /groups/groups/followers/:userId
+    at: /groups/followers/:userId
+    method: get
+
+# ms-templates
+http://ms-templates$SERVICES_SUFFIX:
   - path: /ping/templates
     at: /ping
     method: get
-http://ms-certificate:3000:
+  - path: /templates/templates/:templateId
+    at: /templates/:templateId
+    method: get
+  - path: /templates/templates
+    at: /templates
+    method: get
+  - path: /templates/templates
+    at: /templates
+    method: post
+  - path: /templates/templates/:templateId
+    at: /templates/:templateId
+    method: put
+  - path: /templates/templates/:templateId
+    at: /templates/:templateId
+    method: delete
+
+# ms-certificates
+http://ms-certificate$SERVICES_SUFFIX:
   - path: /ping/certificates
     at: /ping
     method: get
+  - path: /certificates
+    method: post
