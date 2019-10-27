@@ -1,3 +1,6 @@
 [submodule "ms-events"]
 	path = ms-events
 	url = git@gitlab.com:chega.ai/ms-events.git
+[submodule "ms-users"]
+	path = ms-users
+	url = git@gitlab.com:chega.ai/ms-users.git
