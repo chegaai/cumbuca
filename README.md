@@ -9,6 +9,11 @@ Tipo a
 - `cd chega.ai`
 - `git submodule update --init`
 
+## Atualizando módulos
+- `git submodule update --remote`
+> OU
+- `git submodule foreach "git checkout master && git pull"`
+
 ## Adicionando um repositório novo
 Toda vez que um novo microservice for criado, precisamos adicioná-lo a este 
 repositório, como um submodule, e ao docker-compose.yml, como um service
@@ -44,5 +49,5 @@ depende. Todos os services definidos no arquivo de compose devem depender do `vh
 
 ## Utilizando o docker-compose
 - Siga os passos detalhados em [Clonando](#clonando)
-- Define all variables listed on [.envrc.sample](.envrc.sample)
+- Defina todas as variáveis descritas no arquivo [.envrc.sample](.envrc.sample)
 - `docker-compose up`
