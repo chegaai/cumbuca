@@ -4,3 +4,6 @@
 [submodule "ms-users"]
 	path = ms-users
 	url = git@gitlab.com:chega.ai/ms-users.git
+[submodule "ms-groups"]
+	path = ms-groups
+	url = git@gitlab.com:chega.ai/ms-groups.git
