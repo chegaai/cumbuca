@@ -10,3 +10,6 @@
 [submodule "ms-templates"]
 	path = ms-templates
 	url = git@gitlab.com:chega.ai/ms-templates.git
+[submodule "ms-certificate"]
+	path = ms-certificate
+	url = git@gitlab.com:chega.ai/ms-certificate.git
