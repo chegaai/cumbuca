@@ -38,6 +38,7 @@ services:
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       JWT_SECRET: mysupercomplicatedsecretshhhh
+      JWT_AUDIENCE: api-gateway.127.0.0.1.nip.io
     command: ["npm", "run", "start:debug"]
     depends_on:
       - mongodb
@@ -90,3 +91,19 @@ services:
       - ms-users
       - ms-events
       - ms-templates
+
+  api-gateway:
+    build: ./api-gateway
+    environment:
+      VIRTUAL_HOST: api-gateway.127.0.0.1.nip.io
+      AUTH_JWT_AUDIENCE: api-gateway.127.0.0.1.nip.io
+      AUTH_JWT_ISSUER: urn:chega.ai:issuerd
+      MAPS_FILE_URL: $API_GATEWAY_CONFIG
+      DEBUG: api-gateway:presentation:routes
+    depends_on:
+      - vhost
+      - ms-events
+      - ms-users
+      - ms-groups
+      - ms-templates
+      - ms-certificate

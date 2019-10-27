@@ -1,0 +1,20 @@
+http://ms-events:3000:
+  - path: /ping/events
+    at: /ping
+    method: get
+http://ms-users:3000:
+  - path: /ping/users
+    at: /ping
+    method: get
+http://ms-groups:3000:
+  - path: /ping/groups
+    at: /ping
+    method: get
+http://ms-templates:3000:
+  - path: /ping/templates
+    at: /ping
+    method: get
+http://ms-certificate:3000:
+  - path: /ping/certificates
+    at: /ping
+    method: get
