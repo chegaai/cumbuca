@@ -17,16 +17,41 @@ services:
       - "27017:27017"
 
   ms-events:
-      build: ./ms-events
-      environment:
-        VIRTUAL_HOST: ms-events.127.0.0.1.nip.io, ms-event.127.0.0.1.nip.io
-        DATABASE_MONGODB_URI: mongodb://mongodb:27017
-        DATABASE_MONGODB_DBNAME: chegaai
-        MICROSERVICES_USER_URL: http://ms-users:3000
-        MICROSERVICES_GROUP_URL: http://ms-groups:3000
-      command: ["npm", "run", "start:debug"]
-      depends_on:
-        - mongodb
-        - ms-users
-        - ms-groups
-        - vhost
+    build: ./ms-events
+    environment:
+      VIRTUAL_HOST: ms-events.127.0.0.1.nip.io, ms-event.127.0.0.1.nip.io
+      DATABASE_MONGODB_URI: mongodb://mongodb:27017
+      DATABASE_MONGODB_DBNAME: chegaai
+      MICROSERVICES_USER_URL: http://ms-users:3000
+      MICROSERVICES_GROUP_URL: http://ms-groups:3000
+    command: ["npm", "run", "start:debug"]
+    depends_on:
+      - mongodb
+      - ms-users
+      - ms-groups
+      - vhost
+
+  ms-users:
+    build: ./ms-users
+    environment:
+      VIRTUAL_HOST: ms-users.127.0.0.1.nip.io, ms-user.127.0.0.1.nip.io
+      DATABASE_MONGODB_URI: mongodb://mongodb:27017
+      DATABASE_MONGODB_DBNAME: chegaai
+      JWT_SECRET: mysupercomplicatedsecretshhhh
+    command: ["npm", "run", "start:debug"]
+    depends_on:
+      - mongodb
+      - vhost
+
+  ms-groups:
+    build: ./ms-groups
+    environment:
+      VIRTUAL_HOST: ms-groups.127.0.0.1.nip.io, ms-group.127.0.0.1.nip.io
+      DATABASE_MONGODB_URI: mongodb://mongodb:27017
+      DATABASE_MONGODB_DBNAME: chegaai
+      MICROSERVICE_USER_URL: http://ms-users:3000
+    command: ["npm", "run", "start:debug"]
+    depends_on:
+      - mongodb
+      - ms-users
+      - vhost
