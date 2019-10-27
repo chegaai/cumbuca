@@ -19,7 +19,7 @@ services:
   ms-events:
     build: ./ms-events
     environment:
-      VIRTUAL_HOST: ms-events.127.0.0.1.nip.io, ms-event.127.0.0.1.nip.io
+      VIRTUAL_HOST: ms-events.127.0.0.1.nip.io
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICES_USER_URL: http://ms-users:3000
@@ -34,7 +34,7 @@ services:
   ms-users:
     build: ./ms-users
     environment:
-      VIRTUAL_HOST: ms-users.127.0.0.1.nip.io, ms-user.127.0.0.1.nip.io
+      VIRTUAL_HOST: ms-users.127.0.0.1.nip.io
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       JWT_SECRET: mysupercomplicatedsecretshhhh
@@ -46,7 +46,7 @@ services:
   ms-groups:
     build: ./ms-groups
     environment:
-      VIRTUAL_HOST: ms-groups.127.0.0.1.nip.io, ms-group.127.0.0.1.nip.io
+      VIRTUAL_HOST: ms-groups.127.0.0.1.nip.io
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICE_USER_URL: http://ms-users:3000
@@ -54,4 +54,20 @@ services:
     depends_on:
       - mongodb
       - ms-users
+      - vhost
+
+  ms-templates:
+    build: ./ms-templates
+    environment:
+      VIRTUAL_HOST: ms-templates.127.0.0.1.nip.io
+      DATABASE_MONGODB_URI: mongodb://mongodb:27017
+      DATABASE_MONGODB_DBNAME: chegaai
+      MICROSERVICE_GROUP_URL: http://ms-groups:3000
+      AZURE_STORAGE_ACCOUNT_NAME: $MS_TEMPLATES_AZURE_STORAGE_ACCOUNT_NAME
+      AZURE_STORAGE_ACCOUNT_ACCESS_KEY: $MS_TEMPLATES_AZURE_STORAGE_ACCOUNT_ACCESS_KEY
+      AZURE_STORAGE_ACCOUNT_ACCESS_KEY: $MS_TEMPLATES_AZURE_STORAGE_ACCOUNT_ACCESS_KEY
+    command: ["npm", "run", "start:debug"]
+    depends_on:
+      - mongodb
+      - ms-groups
       - vhost
