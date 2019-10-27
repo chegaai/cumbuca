@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  vhost:
+    image: jwilder/nginx-proxy:alpine
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  mongodb:
+    image: mvertes/alpine-mongo:latest
+    volumes:
+      - ./mongodb/db:/data/db
+      - ./mongodb/configdb:/data/configdb
+    ports:
+      - "27017:27017"
