@@ -44,4 +44,5 @@ depende. Todos os services definidos no arquivo de compose devem depender do `vh
 
 ## Utilizando o docker-compose
 - Siga os passos detalhados em [Clonando](#clonando)
+- Define all variables listed on [.envrc.sample](.envrc.sample)
 - `docker-compose up`
