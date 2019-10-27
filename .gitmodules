@@ -1,0 +1,3 @@
+[submodule "ms-events"]
+	path = ms-events
+	url = git@gitlab.com:chega.ai/ms-events.git
