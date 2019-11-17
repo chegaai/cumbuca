@@ -24,4 +24,5 @@ export MS_GROUPS_AZURE_STORAGE_ACCOUNT_ACCESS_KEY=
 export MS_GROUPS_AZURE_STORAGE_CONTAINER_NAME=groups
 
 # API Gateway
-export API_GATEWAY_CONFIG=$(cat ./api-config.yaml | base64)
+export SERVICES_SUFFIX=":3000"
+export API_GATEWAY_CONFIG=$(envsubst < ./api-config.yaml | base64)
