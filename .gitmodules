@@ -22,3 +22,6 @@
 [submodule "ms-profiles"]
 	path = ms-profiles
 	url = git@gitlab.com:chega.ai/ms-profiles.git
+[submodule "azure-blob-storage-client"]
+	path = azure-blob-storage-client
+	url = git@gitlab.com:chega.ai/azure-blob-storage-client.git
