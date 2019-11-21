@@ -51,22 +51,22 @@ http://ms-groups$SERVICES_SUFFIX:
   - path: /ping/groups
     at: /ping
     method: get
-  - path: /groups/groups/:groupId
+  - path: /groups/:groupId
     at: /groups/:groupId
     method: get
-  - path: /groups/groups
+  - path: /groups
     at: /groups
     method: get
-  - path: /groups/groups
+  - path: /groups
     at: /groups
     method: post
-  - path: /groups/groups/:groupId
+  - path: /groups/:groupId
     at: /groups/:groupId
     method: put
-  - path: /groups/groups/:groupId
+  - path: /groups/:groupId
     at: /groups/:groupId
     method: delete
-  - path: /groups/groups/followers/:userId
+  - path: /groups/followers/:userId
     at: /groups/followers/:userId
     method: get
 
