@@ -12,12 +12,15 @@ http://ms-events$SERVICES_SUFFIX:
   - path: /events/
     at: /
     method: post
+    authenticated: true
   - path: /events/:eventId
     at: /:eventId
     method: put
+    authenticated: true
   - path: /events/:eventId
     at: /:eventId
     method: delete
+    authenticated: true
 
 # ms-user
 http://ms-users$SERVICES_SUFFIX:
@@ -30,6 +33,9 @@ http://ms-users$SERVICES_SUFFIX:
   - path: /users/
     at: /
     method: get
+    authenticated: true
+    types:
+      - admin
   - path: /users/
     at: /
     method: post
@@ -39,12 +45,15 @@ http://ms-users$SERVICES_SUFFIX:
   - path: /users/:userId
     at: /:userId
     method: put
+    authenticated: true
   - path: /users/:userId
     at: /:userId
     method: delete
+    authenticated: true
   - path: /users/:userId/followed-groups
     at: /:userId/followed-groups
     method: put
+    authenticated: true
 
 # ms-groups
 http://ms-groups$SERVICES_SUFFIX:
@@ -52,22 +61,25 @@ http://ms-groups$SERVICES_SUFFIX:
     at: /ping
     method: get
   - path: /groups/:groupId
-    at: /groups/:groupId
+    at: /:groupId
     method: get
   - path: /groups
-    at: /groups
+    at: /
     method: get
   - path: /groups
-    at: /groups
+    at: /
     method: post
+    authenticated: true
   - path: /groups/:groupId
-    at: /groups/:groupId
+    at: /:groupId
     method: put
+    authenticated: true
   - path: /groups/:groupId
-    at: /groups/:groupId
+    at: /:groupId
     method: delete
+    authenticated: true
   - path: /groups/followers/:userId
-    at: /groups/followers/:userId
+    at: /followers/:userId
     method: get
 
 # ms-templates
@@ -84,12 +96,15 @@ http://ms-templates$SERVICES_SUFFIX:
   - path: /templates/templates
     at: /templates
     method: post
+    authenticated: true
   - path: /templates/templates/:templateId
     at: /templates/:templateId
     method: put
+    authenticated: true
   - path: /templates/templates/:templateId
     at: /templates/:templateId
     method: delete
+    authenticated: true
 
 # ms-certificates
 http://ms-certificate$SERVICES_SUFFIX:
@@ -98,3 +113,4 @@ http://ms-certificate$SERVICES_SUFFIX:
     method: get
   - path: /certificates
     method: post
+    authenticated: true
