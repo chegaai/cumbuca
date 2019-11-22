@@ -7,6 +7,7 @@ services:
       - 80:80
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./vhost.conf:/etc/nginx/conf.d/proxy_buffer_size.conf:ro
 
   mongodb:
     image: mvertes/alpine-mongo:latest
@@ -102,9 +103,11 @@ services:
     build: ./api-gateway
     environment:
       VIRTUAL_HOST: api-gateway.127.0.0.1.nip.io
-      AUTH_JWT_AUDIENCE: api-gateway.127.0.0.1.nip.io
-      AUTH_JWT_ISSUER: urn:chega.ai:issuerd
       MAPS_FILE_URL: $API_GATEWAY_CONFIG
+      AUTH_JWT_AUDIENCE: api-gateway.127.0.0.1.nip.io
+      AUTH_JWT_ISSUER: urn:chega.ai:issuer
+      AUTH_JWT_SECRET: mysupercomplicatedsecretshhhh
+      AUTH_ALGORITHMS: HS256
     depends_on:
       - vhost
       - ms-events
@@ -117,8 +120,8 @@ services:
     build: ./ms-profiles
     environment:
       VIRTUAL_HOST: ms-profiles.127.0.0.1.nip.io
-      DATABASE_MONGODB_URI: mongodb://mongodb:27017
-      DATABASE_MONGODB_DBNAME: chegaai
+      MONGODB_URI: mongodb://mongodb:27017
+      MONGODB_DBNAME: chegaai
       CLIENTS_GROUP_URL: http://ms-groups:3000
       AZURE_STORAGE_ACCOUNT_NAME: $AZURE_STORAGE_ACCOUNT_NAME
       AZURE_STORAGE_ACCOUNT_ACCESS_KEY: $AZURE_STORAGE_ACCOUNT_ACCESS_KEY
@@ -126,3 +129,6 @@ services:
     depends_on:
       - vhost
       - mongodb
+
+volumes:
+  vhost.conf:
