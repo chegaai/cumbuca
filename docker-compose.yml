@@ -17,10 +17,19 @@ services:
     ports:
       - "27017:27017"
 
+  proxy:
+    image: mitmproxy/mitmproxy
+    entrypoint: mitmweb --web-iface 0.0.0.0
+    ports:
+      - "8081:8081"
+      - "8080:8080"
+    stdin_open: true
+    tty: true
+
   ms-events:
     build: ./ms-events
     environment:
-      VIRTUAL_HOST: ms-events.127.0.0.1.nip.io
+      VIRTUAL_HOST: ms-events.lvh.me
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICES_USER_URL: http://ms-users:3000
@@ -38,11 +47,11 @@ services:
   ms-users:
     build: ./ms-users
     environment:
-      VIRTUAL_HOST: ms-users.127.0.0.1.nip.io
+      VIRTUAL_HOST: ms-users.lvh.me
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       JWT_SECRET: mysupercomplicatedsecretshhhh
-      JWT_AUDIENCE: api-gateway.127.0.0.1.nip.io
+      JWT_AUDIENCE: api-gateway.lvh.me
     command: ["npm", "run", "start:debug"]
     depends_on:
       - mongodb
@@ -51,13 +60,14 @@ services:
   ms-groups:
     build: ./ms-groups
     environment:
-      VIRTUAL_HOST: ms-groups.127.0.0.1.nip.io
+      VIRTUAL_HOST: ms-groups.lvh.me
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICE_USER_URL: http://ms-users:3000
       AZURE_STORAGE_ACCOUNT_NAME: $AZURE_STORAGE_ACCOUNT_NAME
       AZURE_STORAGE_ACCOUNT_ACCESS_KEY: $AZURE_STORAGE_ACCOUNT_ACCESS_KEY
       AZURE_STORAGE_CONTAINER_NAME: groups-dev
+      HTTP_PROXY: https://localhost:8080
     command: ["npm", "run", "start:debug"]
     depends_on:
       - mongodb
@@ -67,7 +77,7 @@ services:
   ms-templates:
     build: ./ms-templates
     environment:
-      VIRTUAL_HOST: ms-templates.127.0.0.1.nip.io
+      VIRTUAL_HOST: ms-templates.lvh.me
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICE_GROUP_URL: http://ms-groups:3000
@@ -83,7 +93,7 @@ services:
   ms-certificate:
     build: ./ms-certificate
     environment:
-      VIRTUAL_HOST: ms-certificate.127.0.0.1.nip.io
+      VIRTUAL_HOST: ms-certificate.lvh.me
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICE_USER_URL: http://ms-users:3000
@@ -102,9 +112,9 @@ services:
   api-gateway:
     build: ./api-gateway
     environment:
-      VIRTUAL_HOST: api-gateway.127.0.0.1.nip.io
+      VIRTUAL_HOST: api-gateway.lvh.me
       MAPS_FILE_URL: $API_GATEWAY_CONFIG
-      AUTH_JWT_AUDIENCE: api-gateway.127.0.0.1.nip.io
+      AUTH_JWT_AUDIENCE: api-gateway.lvh.me
       AUTH_JWT_ISSUER: urn:chega.ai:issuer
       AUTH_JWT_SECRET: mysupercomplicatedsecretshhhh
       AUTH_ALGORITHMS: HS256
@@ -119,7 +129,7 @@ services:
   ms-profiles:
     build: ./ms-profiles
     environment:
-      VIRTUAL_HOST: ms-profiles.127.0.0.1.nip.io
+      VIRTUAL_HOST: ms-profiles.lvh.me
       MONGODB_URI: mongodb://mongodb:27017
       MONGODB_DBNAME: chegaai
       CLIENTS_GROUP_URL: http://ms-groups:3000
