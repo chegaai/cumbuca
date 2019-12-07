@@ -6,10 +6,10 @@ http://ms-events$SERVICES_SUFFIX:
   - path: /events/:eventId
     at: /:eventId
     method: get
-  - path: /events/
+  - path: /events
     at: /
     method: get
-  - path: /events/
+  - path: /events
     at: /
     method: post
     authenticated: true
@@ -19,6 +19,66 @@ http://ms-events$SERVICES_SUFFIX:
     authenticated: true
   - path: /events/:eventId
     at: /:eventId
+    method: delete
+    authenticated: true
+  - path: /events/:groupId/past
+    at: /:groupId/past
+    method: get
+  - path: /events/:eventId/rsvps
+    at: /:eventId/rsvps
+    method: patch
+    authenticated: true
+  - path: /events/:eventId/agenda
+    at: /:eventId/agenda
+    method: put
+    authenticated: true
+  - path: /events/:groupId/upcoming
+    at: /:groupId/upcoming
+    method: get
+  - path: /events/:eventId/attendees
+    at: /:eventId/attendees
+    method: get
+  - path: /events/:eventId/rsvps/declined
+    at: /:eventId/rsvps/declined
+    method: patch
+    authenticated: true
+  - path: /events/:eventId/rsvps/confirmed
+    at: /:eventId/rsvps/confirmed
+    method: patch
+    authenticated: true
+  - path: /events/:eventId/rsvps/waiting
+    at: /:eventId/rsvps/waiting
+    method: patch
+    authenticated: true
+
+# ms-profiles
+http://ms-profiles$SERVICES_SUFFIX:
+  - path: /ping/profiles
+    at: /ping
+    method: get
+  - path: /profiles
+    at: /
+    method: get
+    authenticated: true
+  - path: /profiles
+    at: /
+    method: post
+  - path: /profiles/availability
+    at: /availability
+    method: get
+  - path: /profiles/:id
+    at: /:id
+    method: get
+  - path: /profiles/:id
+    at: /:id
+    method: put
+    authenticated: true
+  - path: /profiles/:userId/groups
+    at: /:id/groups
+    method: post
+    authenticated: true
+  - path: /profiles/:id/groups/:group
+    at: /:id/groups/:group
     method: delete
     authenticated: true
 
@@ -60,8 +120,8 @@ http://ms-groups$SERVICES_SUFFIX:
   - path: /ping/groups
     at: /ping
     method: get
-  - path: /groups/:groupId
-    at: /:groupId
+  - path: /groups/:group
+    at: /:group
     method: get
   - path: /groups
     at: /
@@ -78,8 +138,11 @@ http://ms-groups$SERVICES_SUFFIX:
     at: /:groupId
     method: delete
     authenticated: true
-  - path: /groups/followers/:userId
-    at: /followers/:userId
+  - path: /groups/:userId
+    at: /:userId/groups
+    method: get
+  - path: /groups?organizer=:organizer
+    at: /organizers/:organizer/groups
     method: get
 
 # ms-templates
