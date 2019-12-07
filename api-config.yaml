@@ -170,7 +170,7 @@ http://ms-templates$SERVICES_SUFFIX:
     authenticated: true
 
 # ms-certificates
-http://ms-certificate$SERVICES_SUFFIX:
+http://ms-certificates$SERVICES_SUFFIX:
   - path: /ping/certificates
     at: /ping
     method: get
