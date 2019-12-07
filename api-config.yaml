@@ -150,21 +150,23 @@ http://ms-templates$SERVICES_SUFFIX:
   - path: /ping/templates
     at: /ping
     method: get
-  - path: /templates/templates/:templateId
+  - path: /templates/:templateId
     at: /templates/:templateId
     method: get
-  - path: /templates/templates
+    authenticated: true
+  - path: /templates
     at: /templates
     method: get
-  - path: /templates/templates
+    authenticated: true
+  - path: /templates
     at: /templates
     method: post
     authenticated: true
-  - path: /templates/templates/:templateId
+  - path: /templates/:templateId
     at: /templates/:templateId
     method: put
     authenticated: true
-  - path: /templates/templates/:templateId
+  - path: /templates/:templateId
     at: /templates/:templateId
     method: delete
     authenticated: true
