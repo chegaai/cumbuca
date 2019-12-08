@@ -87,33 +87,46 @@ http://ms-users$SERVICES_SUFFIX:
   - path: /ping/users
     at: /ping
     method: get
-  - path: /users/:userId
-    at: /:userId
+  - path: '/users/me'
+    at: '/me'
+    method: put
+    authenticated: true
+  - path: '/users/me'
+    at: '/me'
     method: get
-  - path: /users/
-    at: /
+    authenticated: true
+  - path: '/users/me/password'
+    at: '/me/password'
+    method: put
+    authenticated: true
+  - path: '/users/'
+    at: '/'
+    method: post
+  - path: '/users/:userId'
+    at: '/:userId'
+    method: delete
+    authenticated: true
+  - path: '/users/:userId'
+    at: '/:userId'
     method: get
     authenticated: true
     types:
       - admin
-  - path: /users/
-    at: /
+  - path: '/users/'
+      at: '/'
+      method: get
+      authenticated: true
+      types:
+        - admin
+  - path: '/users/password-recovery'
+    at: '/password-recovery'
     method: post
-  - path: /users/login
-    at: /login
+  - path: '/users/password-recovery'
+    at: '/password-recovery'
+    method: put
+  - path: '/users/login'
+    at: '/login'
     method: post
-  - path: /users/:userId
-    at: /:userId
-    method: put
-    authenticated: true
-  - path: /users/:userId
-    at: /:userId
-    method: delete
-    authenticated: true
-  - path: /users/:userId/followed-groups
-    at: /:userId/followed-groups
-    method: put
-    authenticated: true
 
 # ms-groups
 http://ms-groups$SERVICES_SUFFIX:
