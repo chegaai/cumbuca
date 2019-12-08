@@ -113,11 +113,11 @@ http://ms-users$SERVICES_SUFFIX:
     types:
       - admin
   - path: '/users/'
-      at: '/'
-      method: get
-      authenticated: true
-      types:
-        - admin
+    at: '/'
+    method: get
+    authenticated: true
+    types:
+      - admin
   - path: '/users/password-recovery'
     at: '/password-recovery'
     method: post
