@@ -74,7 +74,7 @@ http://ms-profiles$SERVICES_SUFFIX:
     method: put
     authenticated: true
   - path: /profiles/:userId/groups
-    at: /:id/groups
+    at: /:userId/groups
     method: post
     authenticated: true
   - path: /profiles/:id/groups/:group
