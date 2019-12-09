@@ -25,3 +25,6 @@
 [submodule "azure-blob-storage-client"]
 	path = azure-blob-storage-client
 	url = git@gitlab.com:chega.ai/azure-blob-storage-client.git
+[submodule "frontend"]
+	path = frontend
+	url = git@gitlab.com:chega.ai/frontend.git
