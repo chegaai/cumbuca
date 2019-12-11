@@ -14,7 +14,6 @@ const create: Listr.ListrTask<GlobalContext> = {
         state: 'São Paulo',
         country: 'Brasil'
       },
-      founder: ctx.userId,
       pictures: { profile: '', banner: '' },
       socialNetworks: [],
       organizers: []
