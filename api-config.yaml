@@ -50,6 +50,9 @@ http://ms-events$SERVICES_SUFFIX:
     at: /:eventId/rsvps/waiting
     method: patch
     authenticated: true
+  - path: /groups/:groupId/events
+    at: /?groupId=:groupId
+    method: get
 
 # ms-profiles
 http://ms-profiles$SERVICES_SUFFIX:
