@@ -17,7 +17,8 @@ const cleanup = () => new Listr<GlobalContext>(
             ctx.mongodb.connection.close()
           }
         }
-      ])
+      ]),
+      skip: () => process.env.SKIP_FINAL_CLEANUP
     }
   ]
 )
