@@ -142,6 +142,9 @@ http://ms-groups$SERVICES_SUFFIX:
   - path: /groups
     at: /
     method: get
+  - path: /groups/:groupId/followers
+    at: /:groupId/followers
+    method: get
   - path: /groups
     at: /
     method: post
