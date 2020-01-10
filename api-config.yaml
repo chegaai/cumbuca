@@ -51,7 +51,7 @@ http://ms-events$SERVICES_SUFFIX:
     method: patch
     authenticated: true
   - path: /groups/:groupId/events
-    at: /?groupId=:groupId
+    at: /?:groupId
     method: get
 
 # ms-profiles
