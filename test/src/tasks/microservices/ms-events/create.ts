@@ -34,7 +34,7 @@ const create: Listr.ListrTask<GlobalContext> = {
 
     const response = await ctx.http.post('/events', payload)
     assert(response.status === 201, `Expected ${response.status} to be 201`)
-    assert(response.data.id ?? false, 'Cannot find event ID')
+    assert(response.data.id ?? false, `Expected ${JSON.stringify(response.data)} to have an 'id' property`)
 
     ctx.eventId = response.data.id
     task.title += ctx.eventId
