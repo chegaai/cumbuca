@@ -18,7 +18,7 @@ export const addRSVPByEmail: Listr.ListrTask<GlobalContext> = {
       document: '399998855'
     }
 
-    const response = await ctx.http.post(`/${ctx.eventId}/rsvps`, payload)
+    const response = await ctx.http.post(`/events/${ctx.eventId}/rsvps`, payload)
     assert(response.status === 201, `Expected ${response.status} to be 201`)
     assert(!response.data.userId, 'userId must not exist')
     assert(response.data.email, 'Cannot find rsvp email')

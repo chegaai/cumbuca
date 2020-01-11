@@ -9,6 +9,14 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./vhost.conf:/etc/nginx/conf.d/proxy_buffer_size.conf:ro
 
+  zaqar:
+    image: khaosdoctor/zaqar:v2.1.1
+    environment:
+      SENDGRID_APIKEY: $SENDGRID_APIKEY
+      DEFAULT_FROM_ADDRESS: contato@chega.ai
+      DEFAULT_FROM_NAME: Chega.aí
+      RENDERER_LIST: zaqar-renderer-pug zaqar-renderer-mustache
+
   mongodb:
     image: mvertes/alpine-mongo:latest
     volumes:
@@ -16,15 +24,6 @@ services:
       - ./mongodb/configdb:/data/configdb
     ports:
       - "27017:27017"
-
-  proxy:
-    image: mitmproxy/mitmproxy
-    entrypoint: mitmweb --web-iface 0.0.0.0
-    ports:
-      - "8081:8081"
-      - "8080:8080"
-    stdin_open: true
-    tty: true
 
   ms-events:
     build: ./ms-events
@@ -50,8 +49,8 @@ services:
       VIRTUAL_HOST: ms-users.lvh.me
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
-      JWT_SECRET: mysupercomplicatedsecretshhhh
-      JWT_AUDIENCE: api-gateway.lvh.me
+      JWT_SECRET: $JWT_SECRET
+      JWT_AUDIENCE: $JWT_AUDIENCE
     command: ["npm", "run", "start:debug"]
     depends_on:
       - mongodb
@@ -67,7 +66,6 @@ services:
       AZURE_STORAGE_ACCOUNT_NAME: $AZURE_STORAGE_ACCOUNT_NAME
       AZURE_STORAGE_ACCOUNT_ACCESS_KEY: $AZURE_STORAGE_ACCOUNT_ACCESS_KEY
       AZURE_STORAGE_CONTAINER_NAME: groups-dev
-      HTTP_PROXY: https://localhost:8080
     command: ["npm", "run", "start:debug"]
     depends_on:
       - mongodb
@@ -90,10 +88,10 @@ services:
       - ms-groups
       - vhost
 
-  ms-certificate:
+  ms-certificates:
     build: ./ms-certificate
     environment:
-      VIRTUAL_HOST: ms-certificate.lvh.me
+      VIRTUAL_HOST: ms-certificates.lvh.me
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICE_USER_URL: http://ms-users:3000
@@ -112,11 +110,11 @@ services:
   api-gateway:
     build: ./api-gateway
     environment:
-      VIRTUAL_HOST: api-gateway.lvh.me
+      VIRTUAL_HOST: api-gateway.192.168.15.31.nip.io
       MAPS_FILE_URL: $API_GATEWAY_CONFIG
-      AUTH_JWT_AUDIENCE: api-gateway.lvh.me
-      AUTH_JWT_ISSUER: urn:chega.ai:issuer
-      AUTH_JWT_SECRET: mysupercomplicatedsecretshhhh
+      AUTH_JWT_AUDIENCE: $JWT_AUDIENCE
+      AUTH_JWT_ISSUER: $JWT_ISSUER
+      AUTH_JWT_SECRET: $JWT_SECRET
       AUTH_ALGORITHMS: HS256
     depends_on:
       - vhost
@@ -124,14 +122,14 @@ services:
       - ms-users
       - ms-groups
       - ms-templates
-      - ms-certificate
+      - ms-certificates
 
   ms-profiles:
     build: ./ms-profiles
     environment:
       VIRTUAL_HOST: ms-profiles.lvh.me
-      MONGODB_URI: mongodb://mongodb:27017
-      MONGODB_DBNAME: chegaai
+      DATABASE_MONGODB_URI: mongodb://mongodb:27017
+      DATABASE_MONGODB_DBNAME: chegaai
       CLIENTS_GROUP_URL: http://ms-groups:3000
       AZURE_STORAGE_ACCOUNT_NAME: $AZURE_STORAGE_ACCOUNT_NAME
       AZURE_STORAGE_ACCOUNT_ACCESS_KEY: $AZURE_STORAGE_ACCOUNT_ACCESS_KEY
@@ -139,6 +137,16 @@ services:
     depends_on:
       - vhost
       - mongodb
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        ENV_API_URL: ${API_URL:-http://api-gateway.192.168.15.31.nip.io}
+    environment:
+      VIRTUAL_HOST: chega-ai.192.168.15.31.nip.io
+    depends_on:
+      - api-gateway
 
 volumes:
   vhost.conf:

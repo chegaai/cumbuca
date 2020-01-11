@@ -51,7 +51,7 @@ http://ms-events$SERVICES_SUFFIX:
     method: patch
     authenticated: true
   - path: /groups/:groupId/events
-    at: /?groupId=:groupId
+    at: /?:groupId
     method: get
 
 # ms-profiles
@@ -84,6 +84,15 @@ http://ms-profiles$SERVICES_SUFFIX:
     at: /:id/groups/:group
     method: delete
     authenticated: true
+  - path: /groups/:group/followers?count
+    at: /?:group?count
+    method: get
+  - path: /groups/:group/followers
+    at: /?:group
+    method: get
+  - path: /me/groups
+    method: get
+    authenticated: true
 
 # ms-user
 http://ms-users$SERVICES_SUFFIX:
@@ -98,6 +107,10 @@ http://ms-users$SERVICES_SUFFIX:
     at: "/me"
     method: get
     authenticated: true
+  - path: "/users/me"
+    at: "/me"
+    method: delete
+    authenticated: true
   - path: "/users/me/password"
     at: "/me/password"
     method: put
@@ -109,6 +122,8 @@ http://ms-users$SERVICES_SUFFIX:
     at: "/:userId"
     method: delete
     authenticated: true
+    types:
+      - admin
   - path: "/users/:userId"
     at: "/:userId"
     method: get
@@ -130,6 +145,9 @@ http://ms-users$SERVICES_SUFFIX:
   - path: "/users/login"
     at: "/login"
     method: post
+  - path: /users/:username/availability
+    at: /:username/availability
+    method: get
 
 # ms-groups
 http://ms-groups$SERVICES_SUFFIX:

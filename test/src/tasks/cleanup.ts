@@ -9,7 +9,8 @@ const cleanup = () => new Listr<GlobalContext>(
       task: () => new Listr<GlobalContext>([
         {
           title: 'collections',
-          task: () => new Listr(clearCollectionTasks)
+          task: () => new Listr(clearCollectionTasks),
+          skip: () => process.env.SKIP_FINAL_CLEANUP
         },
         {
           title: 'connection',
@@ -17,8 +18,7 @@ const cleanup = () => new Listr<GlobalContext>(
             ctx.mongodb.connection.close()
           }
         }
-      ]),
-      skip: () => process.env.SKIP_FINAL_CLEANUP
+      ])
     }
   ]
 )
