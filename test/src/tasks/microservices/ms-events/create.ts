@@ -24,13 +24,15 @@ const create: Listr.ListrTask<GlobalContext> = {
         complement: ''
       },
       groups: [ctx.groupId],
-      rsvp: { openAt: '2019-12-09T20:56:50.426Z', closeAt: '2019-12-09T20:56:50.426Z' },
+      rsvp: { openAt: '2019-12-09T20:56:50.426Z', closeAt: '2500-12-09T20:56:50.426Z' },
       banner: '',
-      organizers: [{
-        title: 'CPF?',
-        subtitle: "ex: 46799988863"
+      organizers: [],
+      inquiries: [{
+        type: 'text',
+        title: 'Inquiry Title',
+        subtitle: 'Inquiry sub',
+        required: true
       }],
-      inquiries: [],
       tags: [],
       agenda: []
     }

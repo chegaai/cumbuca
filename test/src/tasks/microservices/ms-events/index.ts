@@ -1,10 +1,10 @@
 import Listr from 'listr'
 import create from './create'
-import { addRSVPByEmail } from './addRSVP'
+import { addRSVP } from './addRSVP'
 
 const msEvents = () => new Listr([
   create,
-  addRSVPByEmail
+  addRSVP
 ])
 
 export default msEvents
