@@ -10,7 +10,7 @@ services:
       - ./vhost.conf:/etc/nginx/conf.d/proxy_buffer_size.conf:ro
 
   zaqar:
-    image: khaosdoctor/zaqar:v2.1.1
+    image: khaosdoctor/zaqar:latest
     environment:
       SENDGRID_APIKEY: $SENDGRID_APIKEY
       DEFAULT_FROM_ADDRESS: contato@chega.ai
