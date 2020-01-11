@@ -76,10 +76,16 @@ http://ms-profiles$SERVICES_SUFFIX:
   - path: /profiles/:id
     at: /:id
     method: get
+  - path: /profiles/me
+    at: /me
+    method: put
+    authenticated: true
   - path: /profiles/:id
     at: /:id
     method: put
     authenticated: true
+    types:
+      - admin
   - path: /profiles/:userId/groups
     at: /:userId/groups
     method: post
