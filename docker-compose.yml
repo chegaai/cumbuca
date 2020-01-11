@@ -11,8 +11,6 @@ services:
 
   zaqar:
     image: khaosdoctor/zaqar:v2.1.1
-    ports:
-      - "80:3000"
     environment:
       SENDGRID_APIKEY: $SENDGRID_APIKEY
       DEFAULT_FROM_ADDRESS: contato@chega.ai
