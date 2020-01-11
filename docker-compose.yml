@@ -88,10 +88,10 @@ services:
       - ms-groups
       - vhost
 
-  ms-certificate:
+  ms-certificates:
     build: ./ms-certificate
     environment:
-      VIRTUAL_HOST: ms-certificate.lvh.me
+      VIRTUAL_HOST: ms-certificates.lvh.me
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICE_USER_URL: http://ms-users:3000
@@ -122,7 +122,7 @@ services:
       - ms-users
       - ms-groups
       - ms-templates
-      - ms-certificate
+      - ms-certificates
 
   ms-profiles:
     build: ./ms-profiles
