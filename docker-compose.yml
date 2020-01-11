@@ -110,7 +110,7 @@ services:
   api-gateway:
     build: ./api-gateway
     environment:
-      VIRTUAL_HOST: api-gateway.lvh.me
+      VIRTUAL_HOST: api-gateway.192.168.15.31.nip.io
       MAPS_FILE_URL: $API_GATEWAY_CONFIG
       AUTH_JWT_AUDIENCE: $JWT_AUDIENCE
       AUTH_JWT_ISSUER: $JWT_ISSUER

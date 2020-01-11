@@ -84,6 +84,12 @@ http://ms-profiles$SERVICES_SUFFIX:
     at: /:id/groups/:group
     method: delete
     authenticated: true
+  - path: /groups/:group/followers?count
+    at: /?:group?count
+    method: get
+  - path: /groups/:group/followers
+    at: /?:group
+    method: get
 
 # ms-user
 http://ms-users$SERVICES_SUFFIX:
