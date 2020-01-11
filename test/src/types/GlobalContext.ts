@@ -12,6 +12,7 @@ export type GlobalContext = {
     db: Db
   },
   userId: string,
+  rsvpEmail: string,
   groupId: string,
   eventId: string
 }
