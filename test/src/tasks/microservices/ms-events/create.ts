@@ -26,7 +26,10 @@ const create: Listr.ListrTask<GlobalContext> = {
       groups: [ctx.groupId],
       rsvp: { openAt: '2019-12-09T20:56:50.426Z', closeAt: '2019-12-09T20:56:50.426Z' },
       banner: '',
-      organizers: [],
+      organizers: [{
+        title: 'CPF?',
+        subtitle: "ex: 46799988863"
+      }],
       inquiries: [],
       tags: [],
       agenda: []
