@@ -63,6 +63,9 @@ http://ms-profiles$SERVICES_SUFFIX:
     at: /
     method: get
     authenticated: true
+  - path: /profiles/me
+    at: /me
+    authenticated: true
   - path: /profiles
     at: /
     method: post
