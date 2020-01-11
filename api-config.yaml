@@ -90,6 +90,8 @@ http://ms-profiles$SERVICES_SUFFIX:
   - path: /groups/:group/followers
     at: /?:group
     method: get
+  - path: /me/groups
+    method: get
 
 # ms-user
 http://ms-users$SERVICES_SUFFIX:
