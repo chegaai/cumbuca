@@ -138,5 +138,15 @@ services:
       - vhost
       - mongodb
 
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        ENV_API_URL: ${API_URL:-http://api-gateway.192.168.15.31.nip.io}
+    env:
+      VIRTUAL_HOST: chega-ai.192.168.15.31.nip.io
+    depends_on:
+      - api-gateway
+
 volumes:
   vhost.conf:
