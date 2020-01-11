@@ -144,7 +144,8 @@ http://ms-users$SERVICES_SUFFIX:
   - path: "/users/login"
     at: "/login"
     method: post
-  - path: /:username/availability
+  - path: /users/:username/availability
+    at: /:username/availability
     method: get
 
 # ms-groups
