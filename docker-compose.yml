@@ -23,7 +23,7 @@ services:
       - ./mongodb/db:/data/db
       - ./mongodb/configdb:/data/configdb
     ports:
-      - "27018:27017"
+      - "27017:27017"
 
   ms-events:
     build: ./ms-events
