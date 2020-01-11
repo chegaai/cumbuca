@@ -92,6 +92,7 @@ http://ms-profiles$SERVICES_SUFFIX:
     method: get
   - path: /me/groups
     method: get
+    authenticated: true
 
 # ms-user
 http://ms-users$SERVICES_SUFFIX:
