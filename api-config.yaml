@@ -98,6 +98,10 @@ http://ms-users$SERVICES_SUFFIX:
     at: "/me"
     method: get
     authenticated: true
+  - path: "/users/me"
+    at: "/me"
+    method: delete
+    authenticated: true
   - path: "/users/me/password"
     at: "/me/password"
     method: put
@@ -109,6 +113,8 @@ http://ms-users$SERVICES_SUFFIX:
     at: "/:userId"
     method: delete
     authenticated: true
+    types:
+      - admin
   - path: "/users/:userId"
     at: "/:userId"
     method: get
