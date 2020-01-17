@@ -10,7 +10,7 @@ services:
       - ./vhost.conf:/etc/nginx/conf.d/proxy_buffer_size.conf:ro
 
   zaqar:
-    image: khaosdoctor/zaqar:v2.1.1
+    image: khaosdoctor/zaqar:latest
     environment:
       SENDGRID_APIKEY: $SENDGRID_APIKEY
       DEFAULT_FROM_ADDRESS: contato@chega.ai
@@ -130,7 +130,7 @@ services:
   api-gateway:
     build: ./api-gateway
     environment:
-      VIRTUAL_HOST: api-gateway.192.168.15.31.nip.io
+      VIRTUAL_HOST: api-gateway.192.168.15.31.nip.io, api-gateway.lvh.me
       JAEGER_AGENT_HOST: jaeger
       MAPS_FILE_URL: $API_GATEWAY_CONFIG
       AUTH_JWT_AUDIENCE: $JWT_AUDIENCE
