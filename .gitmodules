@@ -13,9 +13,6 @@
 [submodule "ms-certificate"]
 	path = ms-certificate
 	url = git@gitlab.com:chega.ai/ms-certificate.git
-[submodule "ms-cfp"]
-	path = ms-cfp
-	url = git@gitlab.com:chega.ai/ms-cfp.git
 [submodule "api-gateway"]
 	path = api-gateway
 	url = git@gitlab.com:chega.ai/api-gateway.git
