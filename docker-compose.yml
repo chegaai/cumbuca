@@ -94,7 +94,7 @@ services:
       VIRTUAL_HOST: ms-certificates.lvh.me
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
-      MICROSERVICE_USER_URL: http://ms-users:3000
+      MICROSERVICE_PROFILE_URL: http://ms-profiles:3000
       MICROSERVICE_EVENT_URL: http://ms-events:3000
       MICROSERVICE_TEMPLATE_URL: http://ms-templates:3000
       AZURE_STORAGE_ACCOUNT_NAME: $AZURE_STORAGE_ACCOUNT_NAME
@@ -116,6 +116,7 @@ services:
       AUTH_JWT_ISSUER: $JWT_ISSUER
       AUTH_JWT_SECRET: $JWT_SECRET
       AUTH_ALGORITHMS: HS256
+      NODE_ENV: production
     depends_on:
       - vhost
       - ms-events
