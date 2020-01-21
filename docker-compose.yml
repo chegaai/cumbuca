@@ -25,10 +25,28 @@ services:
     ports:
       - "27017:27017"
 
+  jaeger:
+    container_name: jaeger
+    environment:
+      COLLECTOR_ZIPKIN_HTTP_PORT: 9411
+      VIRTUAL_HOST: jaeger.lvh.me
+      VIRTUAL_PORT: 16686
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"
+    image: "jaegertracing/all-in-one:1.16"
+
+
   ms-events:
     build: ./ms-events
     environment:
       VIRTUAL_HOST: ms-events.lvh.me
+      JAEGER_AGENT_HOST: jaeger
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICES_USER_URL: http://ms-users:3000
@@ -47,6 +65,7 @@ services:
     build: ./ms-users
     environment:
       VIRTUAL_HOST: ms-users.lvh.me
+      JAEGER_AGENT_HOST: jaeger
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       JWT_SECRET: $JWT_SECRET
@@ -60,6 +79,7 @@ services:
     build: ./ms-groups
     environment:
       VIRTUAL_HOST: ms-groups.lvh.me
+      JAEGER_AGENT_HOST: jaeger
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICE_PROFILE_URL: http://ms-profiles:3000
@@ -76,6 +96,7 @@ services:
     build: ./ms-templates
     environment:
       VIRTUAL_HOST: ms-templates.lvh.me
+      JAEGER_AGENT_HOST: jaeger
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICE_GROUP_URL: http://ms-groups:3000
@@ -92,6 +113,7 @@ services:
     build: ./ms-certificate
     environment:
       VIRTUAL_HOST: ms-certificates.lvh.me
+      JAEGER_AGENT_HOST: jaeger
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICE_PROFILE_URL: http://ms-profiles:3000
@@ -111,6 +133,7 @@ services:
     build: ./api-gateway
     environment:
       VIRTUAL_HOST: api-gateway.192.168.15.31.nip.io, api-gateway.lvh.me
+      JAEGER_AGENT_HOST: jaeger
       MAPS_FILE_URL: $API_GATEWAY_CONFIG
       AUTH_JWT_AUDIENCE: $JWT_AUDIENCE
       AUTH_JWT_ISSUER: $JWT_ISSUER
@@ -128,6 +151,7 @@ services:
     build: ./ms-profiles
     environment:
       VIRTUAL_HOST: ms-profiles.lvh.me
+      JAEGER_AGENT_HOST: jaeger
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       CLIENTS_GROUP_URL: http://ms-groups:3000
