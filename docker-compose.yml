@@ -116,7 +116,6 @@ services:
       AUTH_JWT_ISSUER: $JWT_ISSUER
       AUTH_JWT_SECRET: $JWT_SECRET
       AUTH_ALGORITHMS: HS256
-      NODE_ENV: production
     depends_on:
       - vhost
       - ms-events
