@@ -20,7 +20,8 @@ const emptyContext: GlobalContext = {
   userId: '',
   groupId: '',
   eventId: '',
-  rsvpEmail: ''
+  rsvpId: '',
+  templateId: ''
 }
 
 const initTasks = new Listr<GlobalContext>([

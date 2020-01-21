@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= event.name %></title>
+
+  <style>
+    /* @import url('https://fonts.googleapis.com/css?family=Noto+Serif&display=swap'); */
+    @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+    * {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    body {
+      background: #000 url('https://i.imgur.com/M4UY1P9.png') repeat;
+      background-size: contain;
+      -webkit-font-smoothing: antialiased !important;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .title {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 35px;
+      color: #FFF;
+      padding-top: 100px;
+    }
+    .div-name {
+      margin-top: 38px;
+      margin-bottom: 40px;
+    }
+    .name {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 30px;
+      /* text-shadow: 3px 1px #000; */
+      text-shadow: -1px 0 black, 0 0.5px black, 0.5px 0 black, 0 -1px black;
+      color: #FFF;
+    }
+    .number {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 20px;
+      /* text-shadow: 0.5px 1px #000; */
+      color: #FFF;
+    }
+    .number-meetup {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 16px;
+      /* text-shadow: 0.5px 1px #000; */
+      color: #FFF;
+    }
+    .div_meetup_title {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+    .meetup_title {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 30px;
+      /* text-shadow: 1px 1px #000; */
+      text-shadow: 0.5px 1px #000;
+      color: #00cde8;
+    }
+    .div_logo {
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    .logo {
+      width: 50%;
+      height: 40%;
+    }
+    .colored {
+      background-color: #fce4d6;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <span class="title">CERTIFICADO DE PARTICIPAÇÃO</span>
+  </div>
+
+  <div>
+    <div class="div-name">
+      <span class="name"><%= user.name %></span>
+    </div>
+    <div class="div-number">
+      <span class="number">Participou do Meetup Developer Circles</span>
+    </div>
+    <div class="div_meetup_title">
+      <span class="meetup_title"><%= event.name %></span>
+    </div>
+  </div>
+
+  <div>
+    <span class="number-meetup">No dia <%= event.date %> com carga horária de <%= event.workload %> horas</span>
+  </div>
+
+  <div class="div_logo">
+    <img class="logo" src='https://i.imgur.com/IKSgc8P.png' />
+  </div>
+
+</body>
+
+</html>
