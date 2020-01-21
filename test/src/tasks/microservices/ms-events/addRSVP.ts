@@ -19,8 +19,8 @@ export const addRSVP: Listr.ListrTask<GlobalContext> = {
     assert(response.status === 200, `Expected ${response.status} to be 200`)
     assert(response.data.userId, 'Cannot find rsvp userId')
     
-    ctx.rsvpEmail = response.data.userId
-    task.title += ctx.rsvpEmail
+    ctx.rsvpId = response.data.userId
+    task.title += ctx.rsvpId
   }
 }
 
