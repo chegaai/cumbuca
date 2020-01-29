@@ -12,7 +12,8 @@ export type GlobalContext = {
     db: Db
   },
   userId: string,
-  rsvpEmail: string,
+  rsvpId: string,
   groupId: string,
-  eventId: string
+  eventId: string,
+  templateId: string
 }

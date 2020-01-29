@@ -198,23 +198,19 @@ http://ms-templates$SERVICES_SUFFIX:
     at: /ping
     method: get
   - path: /templates/:templateId
-    at: /templates/:templateId
+    at: /:templateId
     method: get
     authenticated: true
   - path: /templates
-    at: /templates
-    method: get
-    authenticated: true
-  - path: /templates
-    at: /templates
+    at: /
     method: post
     authenticated: true
   - path: /templates/:templateId
-    at: /templates/:templateId
+    at: /:templateId
     method: put
     authenticated: true
   - path: /templates/:templateId
-    at: /templates/:templateId
+    at: /:templateId
     method: delete
     authenticated: true
 
@@ -224,5 +220,6 @@ http://ms-certificates$SERVICES_SUFFIX:
     at: /ping
     method: get
   - path: /certificates
+    at: /
     method: post
-    authenticated: true
+    authenticated: true  
