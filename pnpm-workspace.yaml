@@ -1,0 +1,6 @@
+packages:
+  - '!node_modules'
+  - '!mongodb'
+  - '!ms-cfp'
+  - '!test'
+  - '*'
