@@ -25,3 +25,9 @@
 [submodule "frontend"]
 	path = frontend
 	url = git@gitlab.com:chega.ai/frontend.git
+[submodule "ms-cfp"]
+	path = ms-cfp
+	url = git@gitlab.com:chega.ai/ms-cfp.git
+[submodule "azure-blob-storage-client"]
+	path = azure-blob-storage-client
+	url = git@gitlab.com:chega.ai/azure-blob-storage-client.git
