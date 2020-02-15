@@ -41,7 +41,6 @@ services:
       - "9411:9411"
     image: "jaegertracing/all-in-one:1.16"
 
-
   ms-events:
     build: ./ms-events
     environment:
@@ -70,6 +69,7 @@ services:
       DATABASE_MONGODB_DBNAME: chegaai
       JWT_SECRET: $JWT_SECRET
       JWT_AUDIENCE: $JWT_AUDIENCE
+      JWT_ISSUER: $JWT_ISSUER
     command: ["npm", "run", "start:debug"]
     depends_on:
       - mongodb
@@ -157,7 +157,7 @@ services:
       CLIENTS_GROUP_URL: http://ms-groups:3000
       AZURE_STORAGE_ACCOUNT_NAME: $AZURE_STORAGE_ACCOUNT_NAME
       AZURE_STORAGE_ACCOUNT_ACCESS_KEY: $AZURE_STORAGE_ACCOUNT_ACCESS_KEY
-      AZURE_STORAGE_CONTAINER_NAME: profile-dev
+      AZURE_STORAGE_CONTAINER_NAME: profiles-dev
     depends_on:
       - vhost
       - mongodb
