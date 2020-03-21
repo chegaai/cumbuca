@@ -139,6 +139,7 @@ services:
       AUTH_JWT_ISSUER: $JWT_ISSUER
       AUTH_JWT_SECRET: $JWT_SECRET
       AUTH_ALGORITHMS: HS256
+      # NODE_ENV: production
     depends_on:
       - vhost
       - ms-events
@@ -162,15 +163,6 @@ services:
       - vhost
       - mongodb
 
-  frontend:
-    build:
-      context: ./frontend
-      args:
-        ENV_API_URL: ${API_URL:-http://api-gateway.lvh.me}
-    environment:
-      VIRTUAL_HOST: chega-ai.lvh.me
-    depends_on:
-      - api-gateway
 
 volumes:
   vhost.conf:

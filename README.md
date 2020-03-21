@@ -5,7 +5,7 @@ Tipo a
 
 
 ## Clonando
-- `git clone git@gitlab.com:chega.ai/cumbuca.git chega.ai`
+- `git clone git@github.com:chegaai/cumbuca.git chega.ai`
 - `cd chega.ai`
 - `git submodule update --init`
 

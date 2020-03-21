@@ -4,7 +4,7 @@ import msGroups from './ms-groups'
 import msEvents from './ms-events'
 import msProfiles from './ms-profiles'
 import { GlobalContext } from '../../types/GlobalContext'
-import msCertificates from './ms-certificates'
+// import msCertificates from './ms-certificates'
 import msTemplates from './ms-template'
 
 const microservices = () => new Listr<GlobalContext>(
@@ -28,11 +28,11 @@ const microservices = () => new Listr<GlobalContext>(
     {
       title: 'ms-templates',
       task: msTemplates
-    },
-    {
-      title: 'ms-certificates',
-      task: msCertificates
     }
+    // {
+    //   title: 'ms-certificates',
+    //   task: msCertificates
+    // }
   ]
 )
 

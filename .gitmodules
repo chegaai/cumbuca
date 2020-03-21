@@ -1,33 +1,33 @@
 [submodule "ms-events"]
 	path = ms-events
-	url = git@gitlab.com:chega.ai/ms-events.git
+	url = git@github.com:chegaai/ms-events.git
 [submodule "ms-users"]
 	path = ms-users
-	url = git@gitlab.com:chega.ai/ms-users.git
+	url = git@github.com:chegaai/ms-users.git
 [submodule "ms-groups"]
 	path = ms-groups
-	url = git@gitlab.com:chega.ai/ms-groups.git
+	url = git@github.com:chegaai/ms-groups.git
 [submodule "ms-templates"]
 	path = ms-templates
-	url = git@gitlab.com:chega.ai/ms-templates.git
+	url = git@github.com:chegaai/ms-templates.git
 [submodule "ms-certificate"]
 	path = ms-certificate
-	url = git@gitlab.com:chega.ai/ms-certificate.git
+	url = git@github.com:chegaai/ms-certificate.git
 [submodule "api-gateway"]
 	path = api-gateway
-	url = git@gitlab.com:chega.ai/api-gateway.git
+	url = git@github.com:chegaai/api-gateway.git
 [submodule "ms-profiles"]
 	path = ms-profiles
-	url = git@gitlab.com:chega.ai/ms-profiles.git
+	url = git@github.com:chegaai/ms-profiles.git
 [submodule "azure-blob-storage-client"]
 	path = azure-blob-storage-client
-	url = git@gitlab.com:chega.ai/azure-blob-storage-client.git
+	url = git@github.com:chegaai/azure-blob-storage-client.git
 [submodule "frontend"]
 	path = frontend
-	url = git@gitlab.com:chega.ai/frontend.git
+	url = git@github.com:chegaai/frontend.git
 [submodule "ms-cfp"]
 	path = ms-cfp
-	url = git@gitlab.com:chega.ai/ms-cfp.git
+	url = git@github.com:chegaai/ms-cfp.git
 [submodule "azure-blob-storage-client"]
 	path = azure-blob-storage-client
-	url = git@gitlab.com:chega.ai/azure-blob-storage-client.git
+	url = git@github.com:chegaai/azure-blob-storage-client.git

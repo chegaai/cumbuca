@@ -4,7 +4,7 @@ if [ -z $1 ]; then
     exit 1
 fi
 
-MODULE_URL="git@gitlab.com:chega.ai/$1.git"
+MODULE_URL="git@github.com:chegaai/$1.git"
 
 read -p "This will add and initialize $MODULE_URL as $1. Press ctrl+c to abort."
 

@@ -26,8 +26,8 @@ const pings = () => new Listr<GlobalContext>(
     ping('profiles'),
     ping('events'),
     ping('groups'),
-    ping('templates'),
-    ping('certificates')
+    ping('templates')
+    // ping('certificates')
   ],
   // @ts-ignore: Again, types don't work with this
   { concurrent: true }
