@@ -19,15 +19,9 @@
 [submodule "ms-profiles"]
 	path = ms-profiles
 	url = git@github.com:chegaai/ms-profiles.git
-[submodule "azure-blob-storage-client"]
-	path = azure-blob-storage-client
-	url = git@github.com:chegaai/azure-blob-storage-client.git
 [submodule "frontend"]
 	path = frontend
 	url = git@github.com:chegaai/frontend.git
 [submodule "ms-cfp"]
 	path = ms-cfp
 	url = git@github.com:chegaai/ms-cfp.git
-[submodule "azure-blob-storage-client"]
-	path = azure-blob-storage-client
-	url = git@github.com:chegaai/azure-blob-storage-client.git
