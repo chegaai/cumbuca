@@ -46,6 +46,7 @@ services:
     environment:
       VIRTUAL_HOST: ms-events.lvh.me
       JAEGER_AGENT_HOST: jaeger
+      JWT_SECRET: $JWT_SECRET
       DATABASE_MONGODB_URI: mongodb://mongodb:27017
       DATABASE_MONGODB_DBNAME: chegaai
       MICROSERVICES_USER_URL: http://ms-users:3000

@@ -50,6 +50,9 @@ http://ms-events$SERVICES_SUFFIX:
     at: /:eventId/rsvps/waiting
     method: patch
     authenticated: true
+  - path: /events/:eventId/rsvps/request-decline
+    at: /:eventId/rsvps/request-decline
+    method: post
   - path: /groups/:groupId/events
     at: /?:groupId
     method: get
