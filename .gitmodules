@@ -25,3 +25,6 @@
 [submodule "ms-cfp"]
 	path = ms-cfp
 	url = git@github.com:chegaai/ms-cfp.git
+[submodule "frontend-nuxt"]
+	path = frontend-nuxt
+	url = git@github.com:chegaai/frontend-nuxt.git
