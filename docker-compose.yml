@@ -2,12 +2,11 @@ version: "3.7"
 
 services:
   vhost:
-    image: jwilder/nginx-proxy:alpine
+    image: nginx
     ports:
       - 80:80
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./vhost.conf:/etc/nginx/conf.d/proxy_buffer_size.conf:ro
+      - ./vhost.conf:/etc/nginx/conf.d/reverse.conf:ro
 
   zaqar:
     image: khaosdoctor/zaqar:latest
